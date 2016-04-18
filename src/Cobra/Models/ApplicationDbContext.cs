@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
+using Cobra.Models;
 
 namespace Cobra.Models
 {
@@ -16,5 +17,6 @@ namespace Cobra.Models
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+        public DbSet<PreOrder> PreOrder { get; set; }
     }
 }
