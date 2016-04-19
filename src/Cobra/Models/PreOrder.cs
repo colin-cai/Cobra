@@ -12,11 +12,17 @@ namespace Cobra.Models
         public ApplicationUser User { get; set; }
 
         public DateTime CreateTime { get; set; }
-
+        
+        public ApplicationUser UpdateUser { get;set; }
+        
         public DateTime UpdateTime { get; set; }
 
         public PreOrderState Status { get; set; }
+        
+        public string Description { get;set; }
 
+        public string Comment { get;set; }
+        
         public List<PreOrderItem> Items { get; set; }
     }
 
