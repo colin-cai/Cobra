@@ -1,23 +1,101 @@
 @model Cobra.Models.PreOrder
 
+@inject Cobra.Services.OptionsService OptionsService
+
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create a Quote";
 }
 
-<h2>Create</h2>
+<h2>Drop us a Quote</h2>
 
 <form asp-action="Create">
-    <div class="form-horizontal">
-        <h4>PreOrder</h4>
+    <div class="form-horizontal" >
+       
+        @*<h4>PreOrder</h4>*@
         <hr />
-        <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <label asp-for="Title" class="col-md-2 control-label">Name Your Quote</label>
+            @*<span class="glyphicon glyphicon-envelope bigicon col-md-1 col-md-offset-1"></span>*@
+            <div class="col-md-10">
+                <input asp-for="Title" class="form-control" placeholder="Enter a title"/>
+                <span asp-validation-for="Title" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email" class="col-md-2 control-label">Email Address</label>
+            <div class="col-md-10">
+                <input asp-for="Email" class="form-control" type="email" placeholder="Enter email"/>
+                <span asp-validation-for="Email" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Phone" class="col-md-2 control-label">Phone</label>
+            <div class="col-md-10">
+                <input asp-for="Phone" class="form-control" placeholder="Enter phone"/>
+                <span asp-validation-for="Phone" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="col-md-2 control-label">Tell us what do you want?</label>
+            <div class="col-md-10">
+                <textarea asp-for="Description" class="form-control"  rows="7" placeholder="Enter your requirements here. We will get back to you within 2 business days." ></textarea>
+                <span asp-validation-for="Description" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Comment" class="col-md-2 control-label">Anything else?</label>
+            <div class="col-md-10">
+                <textarea asp-for="Comment" class="form-control" rows="3" placeholder="Anything else?"></textarea>
+                <span asp-validation-for="Comment" class="text-danger" />
+            </div>
+        </div>
+        @*<div class="form-group">
+            <label asp-for="CreateTime" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CreateTime" class="form-control" />
+                <span asp-validation-for="CreateTime" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Status" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-items=@OptionsService.ListOrderStates().Select(o => new SelectListItem() { Text = o, Value = o }) class="form-control"></select>
+                <span asp-validation-for="Status" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="UpdateTime" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="UpdateTime" class="form-control" />
+                <span asp-validation-for="UpdateTime" class="text-danger" />
+            </div>
+        </div>*@
+        <input asp-for="CreateTime" type="hidden" />
+        <input asp-for="Status" type="hidden" />
+        <input asp-for="UpdateTime" type="hidden" />
+
+        @*<div>
+            @{ await Html.RenderPartialAsync("CreatePaperBag", Model.Product);}
+        </div>*@
+        @*@Html.HiddenFor(model => model.Product.ID)
+        <div>      
+                @await Component.InvokeAsync((string)ViewBag.ProductType, new { product = Model.Product })
+        </div>*@
+
+        <hr />
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </div>
     </div>
 </form>
+
+<p>
+    <a asp-action="CreatePaperBag" asp-route-id="@Model.Id">Add Paper Bag</a> |
+    <a asp-action="CreatePaperBox" asp-route-id="@Model.Id">Add Paper Box</a>
+</p>
 
 <div>
     <a asp-action="Index">Back to List</a>

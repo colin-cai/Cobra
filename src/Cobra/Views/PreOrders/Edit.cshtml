@@ -4,21 +4,118 @@
     ViewData["Title"] = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Edit your Quote</h2>
 
 <form asp-action="Edit">
     <div class="form-horizontal">
-        <h4>PreOrder</h4>
+        <h4>@Model.Title</h4>
         <hr />
-        <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
-        <input type="hidden" asp-for="ID" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="CreateTime"/>
+        <input type="hidden" asp-for="UpdateTime"/>
+        <input type="hidden" asp-for="Status" />
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <label asp-for="Title" class="col-md-2 control-label">Name Your Quote</label>
+            <div class="col-md-10">
+                <input asp-for="Title" class="form-control" placeholder="Enter a title" />
+                <span asp-validation-for="Title" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email" class="col-md-2 control-label">Email Address</label>
+            <div class="col-md-10">
+                <input asp-for="Email" class="form-control" type="email" placeholder="Enter email" />
+                <span asp-validation-for="Email" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Phone" class="col-md-2 control-label">Phone</label>
+            <div class="col-md-10">
+                <input asp-for="Phone" class="form-control" placeholder="Enter phone" />
+                <span asp-validation-for="Phone" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="col-md-2 control-label">Tell us what do you want?</label>
+            <div class="col-md-10">
+                <textarea asp-for="Description" class="form-control" rows="7" placeholder="Enter your requirements here. We will get back to you within 2 business days."></textarea>
+                <span asp-validation-for="Description" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Comment" class="col-md-2 control-label">Anything else?</label>
+            <div class="col-md-10">
+                <textarea asp-for="Comment" class="form-control" rows="3" placeholder="Anything else?"></textarea>
+                <span asp-validation-for="Comment" class="text-danger" />
+            </div>
+        </div>
+
+        @*<div>
+            @await Component.InvokeAsync(Model.ProductType.ToString(), new { product = Model.Product })
+        </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-2">
+                <input type="submit" value="Save Order" class="btn btn-default" />
             </div>
         </div>
     </div>
 </form>
+
+@if (Model.PaperBags != null)
+{
+    <br />
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h4>This order contains following products</h4>
+            </div>
+            <div class="col-md-4 text-right bottom">
+                <p>
+                    <a asp-action="CreatePaperBox" asp-route-id="@Model.Id">Add Paper Box</a> | 
+                    <a asp-action="CreatePaperBag" asp-route-id="@Model.Id">Add Paper Bag</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Description
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.PaperBags)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td align="right">
+                    <a asp-action="EditPaperBag" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="DeletePaperBag" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
+}
+
 
 <div>
     <a asp-action="Index">Back to List</a>

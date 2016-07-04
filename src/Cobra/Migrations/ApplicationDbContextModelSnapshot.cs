@@ -1,9 +1,9 @@
-using System;
-using Microsoft.Data.Entity;
-using Microsoft.Data.Entity.Infrastructure;
-using Microsoft.Data.Entity.Metadata;
-using Microsoft.Data.Entity.Migrations;
-using Cobra.Models;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Cobra.Data;
 
 namespace Cobra.Migrations
 {
@@ -13,7 +13,7 @@ namespace Cobra.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
+                .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Cobra.Models.ApplicationUser", b =>
@@ -56,25 +56,130 @@ namespace Cobra.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
-                        .HasAnnotation("Relational:Name", "EmailIndex");
+                        .HasName("EmailIndex");
 
                     b.HasIndex("NormalizedUserName")
-                        .HasAnnotation("Relational:Name", "UserNameIndex");
+                        .IsUnique()
+                        .HasName("UserNameIndex");
 
-                    b.HasAnnotation("Relational:TableName", "AspNetUsers");
+                    b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("Cobra.Models.PaperBag", b =>
+                {
+                    b.Property<int>("Id");
+
+                    b.Property<string>("Barbel");
+
+                    b.Property<string>("Brand");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Embellishments");
+
+                    b.Property<string>("Finish");
+
+                    b.Property<string>("Handle");
+
+                    b.Property<bool>("HasJHooks");
+
+                    b.Property<bool>("HasLabel");
+
+                    b.Property<float>("Height");
+
+                    b.Property<string>("InnerPacking");
+
+                    b.Property<float>("Length");
+
+                    b.Property<int>("NumberOfDesign");
+
+                    b.Property<string>("PackingWay");
+
+                    b.Property<int>("PreOrderId");
+
+                    b.Property<int>("PrintingStyle");
+
+                    b.Property<int>("Quantity");
+
+                    b.Property<string>("Tag");
+
+                    b.Property<int>("Unit");
+
+                    b.Property<float>("Width");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PreOrderId");
+
+                    b.ToTable("PaperBag");
+                });
+
+            modelBuilder.Entity("Cobra.Models.PaperBox", b =>
+                {
+                    b.Property<int>("Id");
+
+                    b.Property<string>("Brand");
+
+                    b.Property<string>("Description");
+
+                    b.Property<float>("Height");
+
+                    b.Property<float>("Length");
+
+                    b.Property<int>("NumberOfDesign");
+
+                    b.Property<int>("PreOrderId");
+
+                    b.Property<int>("PrintingStyle");
+
+                    b.Property<int>("Quantity");
+
+                    b.Property<int>("Unit");
+
+                    b.Property<float>("Width");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PreOrderId");
+
+                    b.ToTable("PaperBox");
                 });
 
             modelBuilder.Entity("Cobra.Models.PreOrder", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Comment");
+
+                    b.Property<DateTime>("CreateTime");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Phone");
+
+                    b.Property<int>("Status");
+
+                    b.Property<string>("Title");
+
+                    b.Property<DateTime>("UpdateTime");
+
+                    b.Property<string>("UpdateUserId");
 
                     b.Property<string>("UserId");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
+
+                    b.HasIndex("UpdateUserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("PreOrder");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityRole", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
                 {
                     b.Property<string>("Id");
 
@@ -90,12 +195,12 @@ namespace Cobra.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
-                        .HasAnnotation("Relational:Name", "RoleNameIndex");
+                        .HasName("RoleNameIndex");
 
-                    b.HasAnnotation("Relational:TableName", "AspNetRoles");
+                    b.ToTable("AspNetRoles");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -109,10 +214,12 @@ namespace Cobra.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasAnnotation("Relational:TableName", "AspNetRoleClaims");
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserClaim<string>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -126,10 +233,12 @@ namespace Cobra.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasAnnotation("Relational:TableName", "AspNetUserClaims");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider");
 
@@ -142,10 +251,12 @@ namespace Cobra.Migrations
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
-                    b.HasAnnotation("Relational:TableName", "AspNetUserLogins");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserRole<string>", b =>
                 {
                     b.Property<string>("UserId");
 
@@ -153,46 +264,90 @@ namespace Cobra.Migrations
 
                     b.HasKey("UserId", "RoleId");
 
-                    b.HasAnnotation("Relational:TableName", "AspNetUserRoles");
+                    b.HasIndex("RoleId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserRoles");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId");
+
+                    b.Property<string>("LoginProvider");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Value");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Cobra.Models.PaperBag", b =>
+                {
+                    b.HasOne("Cobra.Models.PreOrder", "PreOrder")
+                        .WithMany("PaperBags")
+                        .HasForeignKey("PreOrderId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Cobra.Models.PaperBox", b =>
+                {
+                    b.HasOne("Cobra.Models.PreOrder", "PreOrder")
+                        .WithMany("PaperBoxs")
+                        .HasForeignKey("PreOrderId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Cobra.Models.PreOrder", b =>
                 {
-                    b.HasOne("Cobra.Models.ApplicationUser")
+                    b.HasOne("Cobra.Models.ApplicationUser", "UpdateUser")
+                        .WithMany()
+                        .HasForeignKey("UpdateUserId");
+
+                    b.HasOne("Cobra.Models.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNet.Identity.EntityFramework.IdentityRole")
-                        .WithMany()
-                        .HasForeignKey("RoleId");
+                    b.HasOne("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole")
+                        .WithMany("Claims")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserClaim<string>", b =>
                 {
                     b.HasOne("Cobra.Models.ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("UserId");
+                        .WithMany("Claims")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserLogin<string>", b =>
                 {
                     b.HasOne("Cobra.Models.ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("UserId");
+                        .WithMany("Logins")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserRole<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNet.Identity.EntityFramework.IdentityRole")
-                        .WithMany()
-                        .HasForeignKey("RoleId");
+                    b.HasOne("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole")
+                        .WithMany("Users")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Cobra.Models.ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("UserId");
+                        .WithMany("Roles")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }

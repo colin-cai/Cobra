@@ -1,0 +1,68 @@
+﻿@model Cobra.Models.PaperBag
+
+
+<div class="form-horizontal">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @*<div class="form-group">
+            <label asp-for="Title" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Comment" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Comment" class="form-control" />
+                <span asp-validation-for="Comment" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CreateTime" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CreateTime" class="form-control" />
+                <span asp-validation-for="CreateTime" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Status" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+            </div>
+                <select asp-for="Status" class="form-control"></select>
+                <span asp-validation-for="Status" class="text-danger" />
+        </div>
+        <div class="form-group">
+            <label asp-for="UpdateTime" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="UpdateTime" class="form-control" />
+                <span asp-validation-for="UpdateTime" class="text-danger" />
+            </div>
+        </div>
+
+
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="ProductType" class="col-md-2 control-label">Choose your Product</label>
+            <div class="col-md-10">
+                <select asp-for="ProductType" class="form-control" asp-items="ViewBag.ProductTypes" onchange="<div>@await Component.InvokeAsync("PaperBag") </div>"></select>
+                <span asp-validation-for="ProductType" class="text-danger" />
+            </div>
+        </div>*@
+
+    <div class="form-group">
+        <label asp-for="HasJHooks" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="HasJHooks" class="form-control" />
+            <span asp-validation-for="HasJHooks" class="text-danger" />
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,165 @@
+@model Cobra.Models.PaperBag
+@inject Cobra.Services.OptionsService OptionsService
+
+@{
+    ViewData["Title"] = "CreatePaperBag";
+}
+
+<h2>CreatePaperBag</h2>
+
+<form asp-action="CreatePaperBag">
+    <div class="form-horizontal">
+        <h4>PaperBag</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input asp-for="PreOrderId" value=@ViewData["PreOrderId"] type="hidden" />
+        <div class="form-group">
+            <label asp-for="Height" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Height" class="form-control" />
+                <span asp-validation-for="Height" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Length" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Length" class="form-control" />
+                <span asp-validation-for="Length" class="text-danger" />
+            </div>
+        </div>
+        @*<div class="form-group">
+            <label asp-for="PreOrderId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="PreOrderId" class="form-control" />
+                <span asp-validation-for="PreOrderId" class="text-danger" />
+            </div>
+        </div>*@
+        <div class="form-group">
+            <label asp-for="Quantity" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Unit" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-items=@OptionsService.ListUnits().Select(o => new SelectListItem() { Text = o, Value = o }) class="form-control"></select>
+                <span asp-validation-for="Unit" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Width" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Width" class="form-control" />
+                <span asp-validation-for="Width" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Barbel" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Barbel" class="form-control" />
+                <span asp-validation-for="Barbel" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Brand" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Brand" class="form-control" />
+                <span asp-validation-for="Brand" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Embellishments" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Embellishments" class="form-control" />
+                <span asp-validation-for="Embellishments" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Finish" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Finish" class="form-control" />
+                <span asp-validation-for="Finish" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Handle" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Handle" class="form-control" />
+                <span asp-validation-for="Handle" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="HasJHooks" />
+                    <label asp-for="HasJHooks"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="HasLabel" />
+                    <label asp-for="HasLabel"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="InnerPacking" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="InnerPacking" class="form-control" />
+                <span asp-validation-for="InnerPacking" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="NumberOfDesign" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="NumberOfDesign" class="form-control" />
+                <span asp-validation-for="NumberOfDesign" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PackingWay" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="PackingWay" class="form-control" />
+                <span asp-validation-for="PackingWay" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PrintingStyle" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-items=@OptionsService.ListPrintStyles().Select(o => new SelectListItem() { Text = o, Value = o }) class="form-control"></select>
+                <span asp-validation-for="PrintingStyle" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Tag" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Tag" class="form-control" />
+                <span asp-validation-for="Tag" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@*<div>
+    <a asp-action="Details" asp-route-id=@ViewData["PreOrderId"]>Details</a> 
+</div>*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
