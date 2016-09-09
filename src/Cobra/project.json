@@ -43,7 +43,9 @@
     "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": {
       "version": "1.0.0-preview2-final",
       "type": "build"
-    }
+    },
+    "SendGrid.NetCore": "1.0.0-rtm-00002",
+    "MailKit": "1.4.2.1"
   },
 
   "tools": {

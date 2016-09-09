@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 
 namespace Cobra.Models
 {
@@ -12,15 +14,26 @@ namespace Cobra.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+
+        public string Name { get; set; }
+
+        public string Email { get; set; }
+
+        public string Phone { get; set; }
+
+
         public string Title { get; set; }
 
         public string Description { get; set; }
 
         public string Comment { get; set; }
 
-        public string Email { get; set; }
+        [DataType(DataType.Upload)]
+        [Display(Name = "Upload your Desing File(s) in a Package")]
+        [NotMapped]
+        public ICollection<IFormFile> DesignFiles { get; set; }
 
-        public string Phone { get; set; }
+        public string MappedFiles { get; set; }
 
         public ApplicationUser User { get; set; }
 

@@ -1,29 +1,140 @@
-﻿@{
+﻿@model Cobra.Models.PreOrder
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="content-header">
-    <div class="container">
-        <div class="region region-header">
-            <div id="block-block-61" class="block block-block">
-                <div class="content">
-                    <div class="feature">Featured Whitepaper: <a href="http://go.idealistconsulting.com/salesforce_shoestring">Best Salesforce Apps for Small Businesses&nbsp;</a><a title="Featured Webinar" href="http://www.idealistconsulting.com/webinars/intro-lifecycle-marketing-nonprofits" target="_self">&nbsp;</a><a title="Salesforce on a Shoestring" href="http://go.idealistconsulting.com/salesforce_shoestring" target="_self"><img src="/sites/default/files/intro-arrow.jpg" alt="" width="51" height="50"></a></div>
-                </div>
-            </div>
+@*<form id="contact_form" action="http://indicius.com/" accept-charset="UTF-8" data-remote="true" method="post">
+        <input name="utf8" type="hidden" value="&#x2713;" /><div class="spinner"></div><div class="confirmation"><span><img src="/assets/CheckIconSent-79e74fbd24fcf095fa823113e94ab2cedec58cc296abd9801202e06e2c057293.svg" alt="Checkiconsent 79e74fbd24fcf095fa823113e94ab2cedec58cc296abd9801202e06e2c057293" />Thanks! We'll get back to you<br>within the next few hours.</span></div><div class="field"><label for="contact_name">Your name</label><input type="text" name="contact[name]" id="contact_name" /></div><div class="field"><label for="contact_address">Your e-mail</label><input type="text" name="contact[address]" id="contact_address" /></div><div class="field">
+            <label for="contact_message">How can we help you?</label><textarea name="contact[message]" id="contact_message"></textarea>
+        </div><div class="verification-field"><input type="text" name="contact[verification]" id="contact_verification" /></div><div class="actions">
+            <button>
+                Let's talk<?xml version="1.0" encoding="utf-8" ?>
+                <!-- Generator: Adobe Illustrator 14.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 43363)  -->
+                <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     width="32px" height="32px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
+    <g>
+                <path fill="#FFFFFF" d="M15.901,31.355c-8.503,0-15.421-6.918-15.421-15.42c0-8.503,6.918-15.421,15.421-15.421
+            s15.421,6.918,15.421,15.421C31.322,24.437,24.404,31.355,15.901,31.355L15.901,31.355z M15.901,1.514
+            C7.949,1.514,1.48,7.983,1.48,15.935s6.469,14.42,14.421,14.42c7.952,0,14.421-6.469,14.421-14.42S23.853,1.514,15.901,1.514
+            L15.901,1.514z" />
+    </g>
+    <polygon fill="#FFFFFF" points="10.182,15.341 19.12,15.341 15.182,11.403 16.12,10.341 21.62,15.903 21.62,16.403 16.182,21.529
+        15.182,20.466 19.12,16.403 10.182,16.403 " />
+    </svg>
+            </button><div class="copyright">&copy; Indicius 2016</div>
+        </div>
+    </form>*@
+
+<div id="block-block-65" class="block block-block">
+    <div class="content">
+        <div class="cover">
+            <h1 class="center-block"><em>Save</em> Time and Money on Sourcing Printing &amp; Packing Production Today!</h1>
+            <h3>Compare Price &amp; Service from Qualified China Factories</h3>
         </div>
     </div>
 </div>
 
-<div class="home_rotator">
-    <div class="region region-home-rotator">
-        <div id="block-block-65" class="block block-block">
-            <div class="content">
-                <div class="container">
-                    <div class="home-header">
+<div class="content-container">
+    <form asp-action="CreateQuote" enctype="multipart/form-data">
 
-                        <h1>What Can We Do For Your World?</h1>
-                        <a href="sydneys-world" class="button">Watch the Video</a>
-                        <div class="caption">Serving nonprofit, business<br>and government. <br>Make Salesforce work for you. </div>
+        <div class="form-horizontal">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="DesignFiles" class="col-md-offset-2 col-md-2 control-label">Show us your Design?</label>
+                <div class="col-xs-12 col-md-5">
+                    <input asp-for="DesignFiles" class="form-control" />
+                    <span asp-validation-for="DesignFiles" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="col-md-offset-2 col-md-2 control-label">Your Name</label>
+                <div class="col-xs-12 col-md-5">
+                    <input asp-for="Name" type="text" class="form-control" placeholder="Enter your name" />
+                    <span asp-validation-for="Name" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="col-md-offset-2 col-md-2 control-label">Your Email</label>
+                <div class="col-xs-12 col-md-5">
+                    <input asp-for="Email" type="email" class="form-control" placeholder="Enter your email" />
+                    <span asp-validation-for="Email" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="col-md-offset-2 col-md-2 control-label">How Can We Help You?</label>
+                <div class="col-xs-12 col-md-5">
+                    <textarea asp-for="Description" rows="5" class="form-control" placeholder="Enter your requirements here. We will get back to you within 2 business days."></textarea>
+                    <span asp-validation-for="Description" class="text-danger" />
+                </div>
+            </div>
+
+            <div class="text-center">
+                <input type="submit" value="Drop us a Quote" class="btn btn-success btn-lg" />
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
+<div class="content-container" id="lp-section-1">
+    <div class="content-inner-container">
+        <div class="content-inner-container dark-accent" id="fast-free-easy">
+            <div class="only-desktop">
+                <h2>A Fast, Free, and Easy Way <em>to Find Factory to Produce your Paper Products</em></h2>
+                <div class="row form-group">
+                    <div class="col-md-2 col-md-offset-1">
+                        <div class="number">1</div>
+                    </div>
+                    <div class="col-md-9">
+                        <h3>Fill out a short form</h3>
+                        <p>Our process is fast, easy, and free! Simply enter your basic requirement into our online form (your information will be kept safe on our secure servers).</p>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 col-md-offset-1">
+                        <div class="number">2</div>
+                    </div>
+                    <div class="col-md-8">
+                        <h3>Confirm Requirements</h3>
+                        <p>We will contact you and make sure your requirements is fully understood.</p>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 col-md-offset-1">
+                        <div class="number">3</div>
+                    </div>
+                    <div class="col-md-8">
+                        <h3>Compare Quotes</h3>
+                        <p>
+                            You will receive first 3 competitive bidding quotes from different factories.
+                        </p>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 col-md-offset-1">
+                        <div class="number">4</div>
+                    </div>
+                    <div class="col-md-8">
+                        <h3>Choose Factory</h3>
+                        <p>
+                            We will match you with local agents in your area who can provide additional quotes,
+                            answer any questions you may have about coverage, and assist you in every step of the buying process.
+                        </p>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 col-md-offset-1">
+                        <div class="number">5</div>
+                    </div>
+                    <div class="col-md-8">
+                        <h3>Manage Order</h3>
+                        <p>
+                            Treat us as your "Local Office" to mannage your purchase orders. We will help follow sampling| production| inspection| shipment| payment.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -31,46 +142,77 @@
     </div>
 </div>
 
-<div class="process">
-    <div class="container">
-        <div class="region region-process">
-            <div id="block-block-67" class="block block-block">
-                <h2 class="block-title">Our Process</h2>
-                <div class="content">
-                    <div id="owl-process" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
-                        <div class="owl-wrapper-outer">
-                            <div class="owl-wrapper" style="width: 2096px; left: 0px; display: block; transition: all 0ms ease; transform: translate3d(0px, 0px, 0px);">
-                                <div class="owl-item" style="width: 262px;">
-                                    <div>
-                                        <img src="../sites/all/themes/idealist_skeleton/images/build.png" alt=""><br><h3>build</h3>
-                                        <p>Salesforce to house your data and support your processes</p>
-                                    </div>
-                                </div><div class="owl-item" style="width: 262px;">
-                                    <div>
-                                        <img src="../sites/all/themes/idealist_skeleton/images/move.png" alt=""><br><h3>move</h3>
-                                        <p>Data and processes from old systems to new</p>
-                                    </div>
-                                </div><div class="owl-item" style="width: 262px;">
-                                    <div>
-                                        <img src="../sites/all/themes/idealist_skeleton/images/connect.png" alt=""><br><h3>connect</h3>
-                                        <p>Salesforce to any website or application</p>
-                                    </div>
-                                </div><div class="owl-item" style="width: 262px;">
-                                    <div>
-                                        <img src="../sites/all/themes/idealist_skeleton/images/support.png" alt=""><br><h3>support</h3>
-                                        <p>Before, during, and after implementation</p>
+<div class="zc_i_serve z-graybg">
+    <div class="zc_main">
+        <ul>
+            <li>
+                <h2>Paper Bag</h2>
+                <div class="zj"></div>
+                <p>价格便宜就是任性</p>
+                <a asp-controller="PreOrders" asp-action="Create">Drop us a Quote</a>
+            </li>
+            <li class="ml20">
+                <h2>Paper Box</h2>
+                <div class="cz"></div>
+                <p>价格便宜就是任性</p>
+                <a asp-controller="PreOrders" asp-action="Create">Drop us a Quote</a>
+            </li>
+            <li class="ml20">
+                <h2>Greeting Card</h2>
+                <div class="qy"></div>
+                <p>价格便宜就是任性</p>
+                <a asp-controller="PreOrders" asp-action="Create">Drop us a Quote</a>
+            </li>
+            <li class="ml20">
+                <h2>Carboard Box</h2>
+                <div class="sfc"></div>
+                <p>价格便宜就是任性</p>
+                <a asp-controller="PreOrders" asp-action="Create">Drop us a Quote</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+@*<div class="process">
+        <div class="container">
+            <div class="region region-process">
+                <div id="block-block-67" class="block block-block">
+                    <h2 class="block-title">Our Process</h2>
+                    <div class="content">
+                        <div id="owl-process" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+                            <div class="owl-wrapper-outer">
+                                <div class="owl-wrapper" style="width: 2096px; left: 0px; display: block; transition: all 0ms ease; transform: translate3d(0px, 0px, 0px);">
+                                    <div class="owl-item" style="width: 262px;">
+                                        <div>
+                                            <img src="../sites/all/themes/idealist_skeleton/images/build.png" alt=""><br><h3>build</h3>
+                                            <p>Salesforce to house your data and support your processes</p>
+                                        </div>
+                                    </div><div class="owl-item" style="width: 262px;">
+                                        <div>
+                                            <img src="../sites/all/themes/idealist_skeleton/images/move.png" alt=""><br><h3>move</h3>
+                                            <p>Data and processes from old systems to new</p>
+                                        </div>
+                                    </div><div class="owl-item" style="width: 262px;">
+                                        <div>
+                                            <img src="../sites/all/themes/idealist_skeleton/images/connect.png" alt=""><br><h3>connect</h3>
+                                            <p>Salesforce to any website or application</p>
+                                        </div>
+                                    </div><div class="owl-item" style="width: 262px;">
+                                        <div>
+                                            <img src="../sites/all/themes/idealist_skeleton/images/support.png" alt=""><br><h3>support</h3>
+                                            <p>Before, during, and after implementation</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
+
+
+                            <div class="owl-controls clickable" style="display: none;"><div class="owl-pagination"><div class="owl-page active"><span class=""></span></div></div></div>
                         </div>
-
-
-
-                        <div class="owl-controls clickable" style="display: none;"><div class="owl-pagination"><div class="owl-page active"><span class=""></span></div></div></div>
+                        <p><a class="button" href="http://www.idealistconsulting.com/what-we-do">Learn More </a></p>
                     </div>
-                    <p><a class="button" href="http://www.idealistconsulting.com/what-we-do">Learn More </a></p>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </div>*@

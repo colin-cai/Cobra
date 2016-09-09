@@ -8,29 +8,60 @@ namespace Cobra.Services
 {
     public class OptionsService
     {
-        public string[] ListOrderStates()
+
+        public List<EnumItem> ListOrderStates()
         {
-            return Enum.GetNames(typeof(PreOrderState));
+            return EnumExtensions.GetEnumItems(typeof(PreOrderState));
         }
 
-        public string[] ListProductTypes()
+        public List<EnumItem> ListProductTypes()
         {
-            return Enum.GetNames(typeof(ProductType));
+            return EnumExtensions.GetEnumItems(typeof(ProductType));
         }
 
-        public string[] ListUnits()
+        public List<EnumItem> ListUnits()
         {
-            return Enum.GetNames(typeof(Unit));
+            return EnumExtensions.GetEnumItems(typeof(Unit));
         }
 
-        public string[] ListPaperWeights()
+        public List<EnumItem> ListPaperWeights()
         {
-            return Enum.GetNames(typeof(PaperWeight));
+            return EnumExtensions.GetEnumItems(typeof(PaperMaterialWeight));
         }
 
-        public string[] ListPrintStyles()
+        public List<EnumItem> ListPrintStyles()
         {
-            return Enum.GetNames(typeof(PrintStyle));
+            return EnumExtensions.GetEnumItems(typeof(PrintStyle));
+        }
+
+        public List<EnumItem> ListLaminationTypes()
+        {
+            return EnumExtensions.GetEnumItems(typeof(LaminationType));
+        }
+
+        public List<EnumItem> ListSufaceEmbellishments()
+        {
+            return EnumExtensions.GetEnumItems(typeof(SufaceEmbellishment));
+        }
+
+        public List<EnumItem> ListHandleTypes()
+        {
+            return EnumExtensions.GetEnumItems(typeof(HandleType));
+        }
+
+        public List<EnumItem> ListPackingWays()
+        {
+            return EnumExtensions.GetEnumItems(typeof(PackingWay));
+        }
+
+        public List<EnumItem> ListShippingWays()
+        {
+            return EnumExtensions.GetEnumItems(typeof(ShippingWay));
+        }
+
+        public List<EnumItem> ListPaperMaterialTypes()
+        {
+            return EnumExtensions.GetEnumItems(typeof(PaperMaterialType));
         }
     }
 }

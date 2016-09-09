@@ -4,29 +4,13 @@
     ViewData["Title"] = "DeletePaperBag";
 }
 
-<h3>Are you sure you want to delete this paper bag from order [@Model.PreOrder.Title]?</h3>
-<div>
-    <form asp-action="DeletePaperBag" asp-route-id="@Model.Id">
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            <a asp-action="View" asp-route-id="@Model.PreOrder.Id">Back to Order</a>
-        </div>
-    </form>
+<h2>DeletePaperBag</h2>
 
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PaperBag</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Barbel)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Barbel)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Brand)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Brand)
-        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
@@ -34,16 +18,10 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Embellishments)
+            @Html.DisplayNameFor(model => model.Gusset)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Embellishments)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Finish)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Finish)
+            @Html.DisplayFor(model => model.Gusset)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Handle)
@@ -52,10 +30,10 @@
             @Html.DisplayFor(model => model.Handle)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.HasJHooks)
+            @Html.DisplayNameFor(model => model.HasJHook)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.HasJHooks)
+            @Html.DisplayFor(model => model.HasJHook)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.HasLabel)
@@ -64,40 +42,58 @@
             @Html.DisplayFor(model => model.HasLabel)
         </dd>
         <dt>
+            @Html.DisplayNameFor(model => model.HasTag)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HasTag)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.Height)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Height)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.InnerPacking)
+            @Html.DisplayNameFor(model => model.InnerPackingWay)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.InnerPacking)
+            @Html.DisplayFor(model => model.InnerPackingWay)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Length)
+            @Html.DisplayNameFor(model => model.InsidePrinting)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Length)
+            @Html.DisplayFor(model => model.InsidePrinting)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.NumberOfDesign)
+            @Html.DisplayNameFor(model => model.Lamination)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.NumberOfDesign)
+            @Html.DisplayFor(model => model.Lamination)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.PackingWay)
+            @Html.DisplayNameFor(model => model.Material)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.PackingWay)
+            @Html.DisplayFor(model => model.Material)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.PrintingStyle)
+            @Html.DisplayNameFor(model => model.MaterialWeight)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.PrintingStyle)
+            @Html.DisplayFor(model => model.MaterialWeight)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OuterPackingWay)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OuterPackingWay)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Printing)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Printing)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Quantity)
@@ -106,10 +102,16 @@
             @Html.DisplayFor(model => model.Quantity)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Tag)
+            @Html.DisplayNameFor(model => model.ShippingWay)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Tag)
+            @Html.DisplayFor(model => model.ShippingWay)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SurfaceEmbellishment)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SurfaceEmbellishment)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Unit)
@@ -124,12 +126,11 @@
             @Html.DisplayFor(model => model.Width)
         </dd>
     </dl>
-    <hr />
-
-    <form asp-action="DeletePaperBag" asp-route-id="@Model.Id">
+    
+    <form asp-action="DeletePaperBag">
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            <a asp-action="View" asp-route-id="@Model.PreOrder.Id">Back to Order</a>
+            <a asp-action="Index">Back to List</a>
         </div>
     </form>
 </div>

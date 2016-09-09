@@ -969,7 +969,7 @@ a, a:visited {
 }
 
 #block-block-65 {
-    background: url(/sites/all/themes/idealist_skeleton/images/header-1.png) center top no-repeat;
+    background: url(/images/header-1.png) center top no-repeat;
     background-size: cover;
 }
 
@@ -980,6 +980,14 @@ a, a:visited {
         line-height: normal;
         font-weight: bold;
         letter-spacing: -.06em;
+    }
+
+    #block-block-65 h1 em{
+        color: red;
+    }
+
+    #block-block-65 h3 {
+        color: white;
     }
 
     #block-block-65 .button {
@@ -2773,7 +2781,7 @@ div.messages {
     }
 
     #block-block-65 {
-        background: url(/sites/all/themes/idealist_skeleton/images/header-1.png) center top no-repeat;
+        background: url(/images/header-1.png) center top no-repeat;
         background-size: cover;
     }
 

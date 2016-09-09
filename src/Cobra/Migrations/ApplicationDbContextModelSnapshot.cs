@@ -65,43 +65,115 @@ namespace Cobra.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("Cobra.Models.FactorForPaperBag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<float>("CoatedArtPaper");
+
+                    b.Property<DateTime>("CreateTime");
+
+                    b.Property<float>("FoilPaper");
+
+                    b.Property<float>("Glitter");
+
+                    b.Property<float>("Glossy");
+
+                    b.Property<float>("GrosgrainRibbon");
+
+                    b.Property<float>("HotStamping");
+
+                    b.Property<float>("LaborOfFolding");
+
+                    b.Property<float>("LaborOfLargeSize");
+
+                    b.Property<float>("LaborOfMediumSize");
+
+                    b.Property<float>("LaborOfPrintOnePaper");
+
+                    b.Property<float>("LaborOfSmallSize");
+
+                    b.Property<float>("Matt");
+
+                    b.Property<float>("MetalisedPaper");
+
+                    b.Property<float>("NaturalKraftPaper");
+
+                    b.Property<float>("OrganzaRibbon");
+
+                    b.Property<float>("OtherEmbellishment");
+
+                    b.Property<float>("OtherHandle");
+
+                    b.Property<float>("PP");
+
+                    b.Property<float>("PaperTwist");
+
+                    b.Property<float>("PriceOfJHook");
+
+                    b.Property<float>("PriceOfLabel");
+
+                    b.Property<float>("PriceOfTag");
+
+                    b.Property<float>("SantinRibbon");
+
+                    b.Property<float>("SpotUV");
+
+                    b.Property<float>("TipOn");
+
+                    b.Property<float>("WhiteCardboard");
+
+                    b.Property<float>("WhiteKraftPaper");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FactorForPaperBag");
+                });
+
             modelBuilder.Entity("Cobra.Models.PaperBag", b =>
                 {
                     b.Property<int>("Id");
 
-                    b.Property<string>("Barbel");
-
-                    b.Property<string>("Brand");
+                    b.Property<float?>("ConfirmedPrice");
 
                     b.Property<string>("Description");
 
-                    b.Property<string>("Embellishments");
+                    b.Property<float?>("EvaluatedPrice");
 
-                    b.Property<string>("Finish");
+                    b.Property<float>("Gusset");
 
-                    b.Property<string>("Handle");
+                    b.Property<int>("Handle");
 
-                    b.Property<bool>("HasJHooks");
+                    b.Property<bool>("HasJHook");
 
                     b.Property<bool>("HasLabel");
 
+                    b.Property<bool>("HasTag");
+
                     b.Property<float>("Height");
 
-                    b.Property<string>("InnerPacking");
+                    b.Property<int>("InnerPackingWay");
 
-                    b.Property<float>("Length");
+                    b.Property<int>("InsidePrinting");
 
-                    b.Property<int>("NumberOfDesign");
+                    b.Property<int>("Lamination");
 
-                    b.Property<string>("PackingWay");
+                    b.Property<int>("Material");
+
+                    b.Property<int>("MaterialWeight");
+
+                    b.Property<int>("OuterPackingWay");
 
                     b.Property<int>("PreOrderId");
 
-                    b.Property<int>("PrintingStyle");
+                    b.Property<int>("Printing");
 
                     b.Property<int>("Quantity");
 
-                    b.Property<string>("Tag");
+                    b.Property<int>("ShippingWay");
+
+                    b.Property<int>("SurfaceEmbellishment");
 
                     b.Property<int>("Unit");
 
@@ -120,7 +192,11 @@ namespace Cobra.Migrations
 
                     b.Property<string>("Brand");
 
+                    b.Property<float?>("ConfirmedPrice");
+
                     b.Property<string>("Description");
+
+                    b.Property<float?>("EvaluatedPrice");
 
                     b.Property<float>("Height");
 
@@ -157,6 +233,10 @@ namespace Cobra.Migrations
                     b.Property<string>("Description");
 
                     b.Property<string>("Email");
+
+                    b.Property<string>("MappedFiles");
+
+                    b.Property<string>("Name");
 
                     b.Property<string>("Phone");
 

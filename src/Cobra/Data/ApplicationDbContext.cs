@@ -34,5 +34,7 @@ namespace Cobra.Data
         public DbSet<PreOrder> PreOrder { get; set; }
         public DbSet<PaperBox> PaperBox { get; set; }
         public DbSet<PaperBag> PaperBag { get; set; }
+
+        public DbSet<FactorForPaperBag> FactorForPaperBag { get; set; }
     }
 }

@@ -4,24 +4,24 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Cobra.Models;
+using Cobra.Data;
 
 namespace Cobra.ViewComponents
 {
     public class PaperBagViewComponent: ViewComponent
     {
-
-        public async Task<IViewComponentResult> InvokeAsync(Product product)
+        public PaperBagViewComponent(ApplicationDbContext dbConext)
         {
-            //if (this.ViewData.Model == null)
-            //{
-            //    this.ViewData.Model = new PreOrder();
-            //}
+            DbContext = dbConext;
+        }
 
-            //return View((this.ViewData.Model as PreOrder).Product);
-            ViewData["product"] = product;
+        private ApplicationDbContext DbContext { get; }
 
-            return View(product);
+        public async Task<IViewComponentResult> InvokeAsync(int id)
+        {
+            var paperBag = await DbContext.PaperBag.ToAsyncEnumerable().FirstOrDefault(o=>o.Id == id);
 
+            return View(paperBag);
         }
     }
 }

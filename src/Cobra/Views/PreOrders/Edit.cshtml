@@ -4,11 +4,17 @@
     ViewData["Title"] = "Edit";
 }
 
+<br />
 <h2>Edit your Quote</h2>
-
+<br />
 <form asp-action="Edit">
     <div class="form-horizontal">
-        <h4>@Model.Title</h4>
+        <div class="form-group">
+            <h4 class="col-md-2">@Model.Title</h4>
+            <div class="col-md-10 text-right">
+                <input type="submit" value="Save Quote" class="btn btn-primary" />
+            </div>
+        </div>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <input type="hidden" asp-for="Id" />
@@ -55,11 +61,7 @@
             @await Component.InvokeAsync(Model.ProductType.ToString(), new { product = Model.Product })
         </div>*@
 
-        <div class="form-group">
-            <div class="col-md-offset-4 col-md-2">
-                <input type="submit" value="Save Order" class="btn btn-default" />
-            </div>
-        </div>
+        
     </div>
 </form>
 
@@ -92,6 +94,12 @@
             <th>
                 Description
             </th>
+            <th>
+                Evaluated Price
+            </th>
+            <th>
+                Evaluated Amount
+            </th>
             <th></th>
         </tr>
 
@@ -107,8 +115,15 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EvaluatedPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EvaluatedAmount)
+                </td>
                 <td align="right">
                     <a asp-action="EditPaperBag" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="DetailsPaperBag" asp-route-id="@item.Id">Details</a> |
                     <a asp-action="DeletePaperBag" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
@@ -118,7 +133,7 @@
 
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to Quote List</a>
 </div>
 
 @section Scripts {

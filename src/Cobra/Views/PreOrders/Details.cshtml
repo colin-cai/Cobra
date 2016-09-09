@@ -4,11 +4,10 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
-
+<br />
+<h2>Quote - @Model.Title</h2>
+<br />
 <div class="container">
-    <h4>PreOrder</h4>
-    @*<hr />*@
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Title)
@@ -49,36 +48,40 @@
     </dl>
 </div>
 
-<p>
+@*<p>
     <a asp-action="CreatePaperBag" asp-route-id="@Model.Id">Add Paper Bag</a> |
     <a asp-action="CreatePaperBox" asp-route-id="@Model.Id">Add Paper Box</a>
-</p>
+</p>*@
 <br />
 
 @for (var index = 0; index < Model.PaperBags.Count(); index++)
 {
     <br />
+    <br />
     <div class="row">
         <div class="col-md-8">
-            <h4>This is a Paper Bag</h4>
+            <h4>Paper Bag - @Model.PaperBags[index].Description</h4>
         </div>
         <div class="col-md-4 text-right">
             <p>
-                <a asp-action="DeletePaperBag" asp-route-id="@Model.PaperBags[index].Id">Delete</a> |
-                <a asp-action="EditPaperBag" asp-route-id="@Model.PaperBags[index].Id">Edit</a>
+                <a asp-action="EditPaperBag" asp-route-id="@Model.PaperBags[index].Id">Edit</a> |
+                <a asp-action="DeletePaperBag" asp-route-id="@Model.PaperBags[index].Id">Delete</a>
             </p>
         </div>
     </div>
     <hr />
-    @Html.Partial("DetailsPaperBag", Model.PaperBags[index])
+    @await Component.InvokeAsync("PaperBag", new { id = Model.PaperBags[index].Id })
+    @*@Html.Partial("DetailsPaperBag", Model.PaperBags[index])*@
 }
 
-<p>
+@*<p>
     <a asp-action="CreatePaperBag" asp-route-id="@Model.Id">Add Paper Bag</a> |
     <a asp-action="CreatePaperBox" asp-route-id="@Model.Id">Add Paper Box</a>
-</p>
+</p>*@
 
+<br />
+<br />
 <p>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit this Quote</a> |
+    <a asp-action="Index">Back to Quote List</a>
 </p>

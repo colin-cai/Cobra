@@ -5,9 +5,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Cobra.Models;
 using Cobra.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Cobra.Controllers
 {
+    [Authorize]
     public class PreOrdersController : Controller
     {
         private ApplicationDbContext _context;
@@ -84,107 +86,6 @@ namespace Cobra.Controllers
             return View(preOrder);
         }
 
-        // GET: PreOrders/Create
-        public IActionResult CreatePaperBag(int id)
-        {
-            ViewData["PreOrderId"] = id;
-            return View();
-        }
-
-        // POST: PreOrders/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult CreatePaperBag(PaperBag paperBag)
-        {
-            if (ModelState.IsValid)
-            {
-                //PreOrder preOrder = _context.PreOrder.Single(m => m.Id == paperBag.PreOrderId);
-                //if (preOrder == null)
-                //{
-                //    return NotFound();
-                //}
-
-                //if(preOrder.PaperBags == null)
-                //{
-                //    preOrder.PaperBags = new System.Collections.Generic.List<PaperBag>();
-                //}
-
-                //preOrder.PaperBags.Add(paperBag);
-                var first = _context.PaperBag.OrderByDescending(o => o.Id).FirstOrDefault();
-                if (first != null)
-                {
-                    paperBag.Id = first.Id + 1;
-                }
-                _context.Add(paperBag);
-
-                _context.SaveChanges();
-
-                return RedirectToAction("Details", new { id = paperBag.PreOrderId });
-            }
-            return View(paperBag);
-        }
-
-        // GET: PreOrders/Create
-        public IActionResult DeletePaperBag(int? orderId, int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            PaperBag paperBag = _context.PaperBag.Single(m => m.Id == id);
-            if (paperBag == null)
-            {
-                return NotFound();
-            }
-            paperBag.PreOrder = _context.PreOrder.Single(m => m.Id == paperBag.PreOrderId);
-
-            return View(paperBag);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult DeletePaperBag(int id)
-        {
-            PaperBag paperBag = _context.PaperBag.Single(m => m.Id == id);
-
-            if (paperBag != null)
-            {
-                PreOrder preOrder = _context.PreOrder.Single(m => m.Id == paperBag.PreOrderId);
-                if (preOrder != null && preOrder.PaperBags != null)
-                {
-                    preOrder.PaperBags.Remove(paperBag);
-                }
-            }
-            _context.PaperBag.Remove(paperBag);
-            _context.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-
-        // GET: PreOrders/Create
-        public IActionResult CreatePaperBox()
-        {
-            ViewBag.ProductTypes = Enum.GetNames(typeof(ProductType)).Select(o => new SelectListItem() { Text = o, Value = o });
-
-            PreOrder order = new PreOrder();
-            return View(order);
-        }
-
-        // POST: PreOrders/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult CreatePaperBox(PreOrder preOrder)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.PreOrder.Add(preOrder);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(preOrder);
-        }
-
         // GET: PreOrders/Edit/5 
         public IActionResult Edit(int? id)
         {
@@ -249,5 +150,129 @@ namespace Cobra.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        // GET: PreOrders/Create
+        public IActionResult CreatePaperBag(int id)
+        {
+            ViewData["PreOrderId"] = id;
+            return View();
+        }
+
+        // POST: PreOrders/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreatePaperBag(PaperBag paperBag)
+        {
+            if (ModelState.IsValid)
+            {
+                var factor = _context.FactorForPaperBag.FirstOrDefault();
+                paperBag.EvaluatedPrice = paperBag.EvaluatePrice(factor);
+                var first = _context.PaperBag.OrderByDescending(o => o.Id).FirstOrDefault();
+                if (first != null)
+                {
+                    paperBag.Id = first.Id + 1;
+                }
+                else
+                {
+                    paperBag.Id = 10001;
+                }
+                _context.Add(paperBag);
+
+                _context.SaveChanges();
+
+                return RedirectToAction("Edit", new { id = paperBag.PreOrderId });
+            }
+            return View(paperBag);
+        }
+
+        // GET: PreOrders/Edit/5 
+        public IActionResult EditPaperBag(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var paperBag = _context.PaperBag.Single(m => m.Id == id);
+            if (paperBag == null)
+            {
+                return NotFound();
+            }
+
+            return View(paperBag);
+        }
+
+        // POST: PreOrders/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditPaperBag(PaperBag paperBag)
+        {
+            if (ModelState.IsValid)
+            {
+                var factor = _context.FactorForPaperBag.FirstOrDefault();
+                paperBag.EvaluatedPrice = paperBag.EvaluatePrice(factor);
+                _context.Update(paperBag);
+                _context.SaveChanges();
+                return RedirectToAction("Edit", new { id = paperBag.PreOrderId });
+            }
+
+            return View(paperBag);
+        }
+
+        // GET: PreOrders/Create
+        public IActionResult DeletePaperBag(int? orderId, int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            PaperBag paperBag = _context.PaperBag.Single(m => m.Id == id);
+            if (paperBag == null)
+            {
+                return NotFound();
+            }
+            paperBag.PreOrder = _context.PreOrder.Single(m => m.Id == paperBag.PreOrderId);
+
+            return View(paperBag);
+        }
+
+        // GET: PreOrders/Details/5
+        public IActionResult DetailsPaperBag(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var paperBag = _context.PaperBag.Single(m => m.Id == id);
+            if (paperBag == null)
+            {
+                return NotFound();
+            }
+
+            return View(paperBag);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePaperBag(int id)
+        {
+            PaperBag paperBag = _context.PaperBag.Single(m => m.Id == id);
+
+            if (paperBag != null)
+            {
+                PreOrder preOrder = _context.PreOrder.Single(m => m.Id == paperBag.PreOrderId);
+                if (preOrder != null && preOrder.PaperBags != null)
+                {
+                    preOrder.PaperBags.Remove(paperBag);
+                }
+            }
+            _context.PaperBag.Remove(paperBag);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
     }
 }

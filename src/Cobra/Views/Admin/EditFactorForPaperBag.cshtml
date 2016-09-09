@@ -1,0 +1,234 @@
+@model Cobra.Models.FactorForPaperBag
+
+@{
+    ViewData["Title"] = "Edit FactorForPaperBag";
+}
+
+<br />
+<h3>Factors which affect the calculation for paper bags (CNY)</h3>
+
+
+<form asp-action="EditFactorForPaperBag">
+    <div class="form-horizontal">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="CreateTime" />
+
+        <hr />
+        <div class="form-group">
+            <label asp-for="CoatedArtPaper" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CoatedArtPaper" class="form-control" />
+                <span asp-validation-for="CoatedArtPaper" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FoilPaper" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FoilPaper" class="form-control" />
+                <span asp-validation-for="FoilPaper" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="MetalisedPaper" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="MetalisedPaper" class="form-control" />
+                <span asp-validation-for="MetalisedPaper" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="NaturalKraftPaper" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="NaturalKraftPaper" class="form-control" />
+                <span asp-validation-for="NaturalKraftPaper" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="WhiteCardboard" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="WhiteCardboard" class="form-control" />
+                <span asp-validation-for="WhiteCardboard" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="WhiteKraftPaper" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="WhiteKraftPaper" class="form-control" />
+                <span asp-validation-for="WhiteKraftPaper" class="text-danger" />
+            </div>
+        </div>
+
+        <hr />
+        <div class="form-group">
+            <label asp-for="Matt" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Matt" class="form-control" />
+                <span asp-validation-for="Matt" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Glossy" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Glossy" class="form-control" />
+                <span asp-validation-for="Glossy" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Glitter" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Glitter" class="form-control" />
+                <span asp-validation-for="Glitter" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="HotStamping" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="HotStamping" class="form-control" />
+                <span asp-validation-for="HotStamping" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="TipOn" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="TipOn" class="form-control" />
+                <span asp-validation-for="TipOn" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="SpotUV" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="SpotUV" class="form-control" />
+                <span asp-validation-for="SpotUV" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="OtherEmbellishment" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="OtherEmbellishment" class="form-control" />
+                <span asp-validation-for="OtherEmbellishment" class="text-danger" />
+            </div>
+        </div>
+
+        <hr />
+        <div class="form-group">
+            <label asp-for="LaborOfLargeSize" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="LaborOfLargeSize" class="form-control" />
+                <span asp-validation-for="LaborOfLargeSize" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="LaborOfMediumSize" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="LaborOfMediumSize" class="form-control" />
+                <span asp-validation-for="LaborOfMediumSize" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="LaborOfSmallSize" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="LaborOfSmallSize" class="form-control" />
+                <span asp-validation-for="LaborOfSmallSize" class="text-danger" />
+            </div>
+        </div>
+
+        <hr />
+        <div class="form-group">
+            <label asp-for="LaborOfFolding" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="LaborOfFolding" class="form-control" />
+                <span asp-validation-for="LaborOfFolding" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="LaborOfPrintOnePaper" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="LaborOfPrintOnePaper" class="form-control" />
+                <span asp-validation-for="LaborOfPrintOnePaper" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PriceOfJHook" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="PriceOfJHook" class="form-control" />
+                <span asp-validation-for="PriceOfJHook" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PriceOfLabel" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="PriceOfLabel" class="form-control" />
+                <span asp-validation-for="PriceOfLabel" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PriceOfTag" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="PriceOfTag" class="form-control" />
+                <span asp-validation-for="PriceOfTag" class="text-danger" />
+            </div>
+        </div>
+
+        <hr />
+        <div class="form-group">
+            <label asp-for="OrganzaRibbon" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="OrganzaRibbon" class="form-control" />
+                <span asp-validation-for="OrganzaRibbon" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="GrosgrainRibbon" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="GrosgrainRibbon" class="form-control" />
+                <span asp-validation-for="GrosgrainRibbon" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PP" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="PP" class="form-control" />
+                <span asp-validation-for="PP" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PaperTwist" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="PaperTwist" class="form-control" />
+                <span asp-validation-for="PaperTwist" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="SantinRibbon" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="SantinRibbon" class="form-control" />
+                <span asp-validation-for="SantinRibbon" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="OtherHandle" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="OtherHandle" class="form-control" />
+                <span asp-validation-for="OtherHandle" class="text-danger" />
+            </div>
+        </div>
+
+        <hr />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="DetailsFactorForPaperBag">Back</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

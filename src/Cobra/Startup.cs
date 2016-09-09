@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Cobra.Data;
 using Cobra.Models;
 using Cobra.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Cobra
 {
@@ -53,11 +54,16 @@ namespace Cobra
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
+            //services.Configure<MvcOptions>(options =>
+            //{
+            //    options.Filters.Add(new RequireHttpsAttribute());
+            //});
 
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
             services.AddTransient<OptionsService>();
+            services.Configure<AuthMessageSenderOptions>(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

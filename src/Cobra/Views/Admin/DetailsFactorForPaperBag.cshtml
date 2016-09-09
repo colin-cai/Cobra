@@ -1,0 +1,212 @@
+@model Cobra.Models.FactorForPaperBag
+
+@{
+    ViewData["Title"] = "Details FactorForPaperBag";
+}
+<br />
+<h3>Factors which affect the calculation for paper bags (CNY)</h3>
+
+<div>
+    @*Create Time*@
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreateTime)
+        </dd>
+    </dl>
+
+    @*Material*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CoatedArtPaper)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CoatedArtPaper)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FoilPaper)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FoilPaper)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MetalisedPaper)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MetalisedPaper)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NaturalKraftPaper)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NaturalKraftPaper)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WhiteCardboard)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WhiteCardboard)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WhiteKraftPaper)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WhiteKraftPaper)
+        </dd>
+    </dl>
+
+    @*Lamination*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Matt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Matt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Glossy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Glossy)
+        </dd>
+    </dl>
+
+    @*Embellishment*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Glitter)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Glitter)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HotStamping)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HotStamping)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TipOn)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TipOn)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SpotUV)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SpotUV)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OtherEmbellishment)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OtherEmbellishment)
+        </dd>
+    </dl>
+
+    @*Labor Cost*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LaborOfLargeSize)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LaborOfLargeSize)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LaborOfMediumSize)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LaborOfMediumSize)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LaborOfSmallSize)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LaborOfSmallSize)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LaborOfFolding)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LaborOfFolding)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LaborOfPrintOnePaper)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LaborOfPrintOnePaper)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceOfJHook)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PriceOfJHook)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceOfLabel)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PriceOfLabel)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceOfTag)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PriceOfTag)
+        </dd>
+    </dl>
+
+    @*Cost for Handle*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganzaRibbon)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OrganzaRibbon)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GrosgrainRibbon)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GrosgrainRibbon)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PP)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PP)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PaperTwist)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PaperTwist)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SantinRibbon)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SantinRibbon)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OtherHandle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OtherHandle)
+        </dd>
+    </dl>
+</div>
+<hr/>
+<div class="col-md-offset-2">
+    <a asp-action="EditFactorForPaperBag" asp-route-id="@Model.Id">Edit</a> 
+</div>

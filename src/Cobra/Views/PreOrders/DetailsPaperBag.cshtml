@@ -1,120 +1,18 @@
 @model Cobra.Models.PaperBag
 
-@*@{
-    ViewData["Title"] = "DetailsPaperBag";
+@{
+    ViewData["Title"] = "View";
 }
 
-<h2>DetailsPaperBag</h2>*@
-
-
-<dl class="dl-horizontal">
-    <dt>
-        @Html.DisplayNameFor(model => model.Barbel)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.Barbel)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.Brand)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.Brand)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.Description)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.Description)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.Embellishments)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.Embellishments)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.Finish)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.Finish)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.Handle)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.Handle)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.HasJHooks)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.HasJHooks)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.HasLabel)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.HasLabel)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.Height)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.Height)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.InnerPacking)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.InnerPacking)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.Length)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.Length)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.NumberOfDesign)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.NumberOfDesign)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.PackingWay)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.PackingWay)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.PrintingStyle)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.PrintingStyle)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.Quantity)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.Quantity)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.Tag)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.Tag)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.Unit)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.Unit)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.Width)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.Width)
-    </dd>
-</dl>
-
+<br />
+<h4>Paper Bag - @Model.Description</h4>
+<div>
+    <hr />
+    @await Component.InvokeAsync("PaperBag", new { id = Model.Id })
+</div>
+<br />
+<br />
+<div>
+    <a asp-action="EditPaperBag" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Edit" asp-route-id=@Model.PreOrderId>Back to Quote</a>
+</div>

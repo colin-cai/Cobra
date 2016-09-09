@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cobra.Models
 {
-    public class Product
+    public abstract class Product
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
@@ -14,6 +14,14 @@ namespace Cobra.Models
         public int Quantity { get; set; }
 
         public string Description { get; set; }
+
+        public float? EvaluatedPrice { get; set; }
+
+        public float? EvaluatedAmount { get { return EvaluatedPrice * Quantity; } }
+
+        public float? ConfirmedPrice { get; set; }
+
+        public float? ConfirmedAmount { get { return ConfirmedPrice * Quantity; } }
 
         public int PreOrderId { get; set; }
 
@@ -25,7 +33,7 @@ namespace Cobra.Models
             switch (type)
             {
                 case ProductType.PaperBag:
-                    product = new PaperBag() { HasJHooks = true };
+                    product = new PaperBag() {  };
                     
                     break;
                 case ProductType.PaperBox:
@@ -35,40 +43,8 @@ namespace Cobra.Models
 
             return product;
         }
+
+        public abstract float EvaluatePrice(ICalculateFactor factor);
     }
 
-    public class PaperProduct : Product
-    {
-        public float Length { get; set; }
-        public float Width { get; set; }
-        public float Height { get; set; }
-
-        public Unit Unit { get; set; }
-
-        public string Brand { get; set; }
-
-
-
-        public int NumberOfDesign { get; set; }
-
-        public PrintStyle PrintingStyle { get; set; }
-    }
-
-    public enum Unit
-    {
-        inch,
-        cm
-    }
-
-    public enum PaperWeight
-    {
-        G157,
-        G127
-    }
-
-    public enum PrintStyle
-    {
-        SixColor,
-        FourColor
-    }
 }
