@@ -11,6 +11,9 @@ namespace Cobra.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
+        [NotMapped]
+        public string ObscureId { get; set; }
+
         public int Quantity { get; set; }
 
         public string Description { get; set; }
@@ -24,6 +27,9 @@ namespace Cobra.Models
         public float? ConfirmedAmount { get { return ConfirmedPrice * Quantity; } }
 
         public int PreOrderId { get; set; }
+
+        [NotMapped]
+        public string ObscurePreOrderId { get; set; }
 
         public PreOrder PreOrder { get; set; }
 

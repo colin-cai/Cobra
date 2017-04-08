@@ -7,7 +7,7 @@
 <br />
 <h2>Edit your Quote</h2>
 <br />
-<form asp-action="Edit">
+<form asp-action="Edit" enctype="multipart/form-data">
     <div class="form-horizontal">
         <div class="form-group">
             <h4 class="col-md-2">@Model.Title</h4>
@@ -18,9 +18,13 @@
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="ObscureId" />
         <input type="hidden" asp-for="CreateTime"/>
         <input type="hidden" asp-for="UpdateTime"/>
+        <input type="hidden" asp-for="Comment" />
         <input type="hidden" asp-for="Status" />
+        <input type="hidden" asp-for="User" />
+        <input type="hidden" asp-for="UpdateUser" />
         <div class="form-group">
             <label asp-for="Title" class="col-md-2 control-label">Name Your Quote</label>
             <div class="col-md-10">
@@ -50,12 +54,20 @@
             </div>
         </div>
         <div class="form-group">
+            <label asp-for="DesignFiles" class="col-md-2 control-label">Has quotation document?</label>
+            <div class="col-md-10">
+                <input asp-for="DesignFiles" class="form-control" placeholder="Leave it empty or show us your quotation file" />
+                <span asp-validation-for="DesignFiles" class="text-danger" />
+            </div>
+        </div>
+
+        @*<div class="form-group">
             <label asp-for="Comment" class="col-md-2 control-label">Anything else?</label>
             <div class="col-md-10">
                 <textarea asp-for="Comment" class="form-control" rows="3" placeholder="Anything else?"></textarea>
                 <span asp-validation-for="Comment" class="text-danger" />
             </div>
-        </div>
+        </div>*@
 
         @*<div>
             @await Component.InvokeAsync(Model.ProductType.ToString(), new { product = Model.Product })
@@ -76,12 +88,11 @@
             </div>
             <div class="col-md-4 text-right bottom">
                 <p>
-                    <a asp-action="CreatePaperBox" asp-route-id="@Model.Id">Add Paper Box</a> | 
-                    <a asp-action="CreatePaperBag" asp-route-id="@Model.Id">Add Paper Bag</a>
+                    <a asp-action="CreatePaperBox" asp-route-obscureId="@Model.ObscureId">Add Paper Box</a> | 
+                    <a asp-action="CreatePaperBag" asp-route-obscureId="@Model.ObscureId">Add Paper Bag</a>
                 </p>
             </div>
         </div>
-
     </div>
     <table class="table">
         <tr>
@@ -122,9 +133,9 @@
                     @Html.DisplayFor(modelItem => item.EvaluatedAmount)
                 </td>
                 <td align="right">
-                    <a asp-action="EditPaperBag" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="DetailsPaperBag" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="DeletePaperBag" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="EditPaperBag" asp-route-obscureId="@item.ObscureId">Edit</a> |
+                    <a asp-action="DetailsPaperBag" asp-route-obscureId="@item.ObscureId">Details</a> |
+                    <a asp-action="DeletePaperBag" asp-route-obscureId="@item.ObscureId">Delete</a>
                 </td>
             </tr>
         }
@@ -133,7 +144,7 @@
 
 
 <div>
-    <a asp-action="Index">Back to Quote List</a>
+    <a asp-action="Index">Back to your Quotes</a>
 </div>
 
 @section Scripts {

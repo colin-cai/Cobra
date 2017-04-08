@@ -1,4 +1,5 @@
 @model IEnumerable<Cobra.Models.PreOrder>
+@using Microsoft.AspNetCore.DataProtection
 
 @{
     ViewData["Title"] = "Index";
@@ -19,13 +20,12 @@
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.Description)*@
+            @Html.DisplayNameFor(model => model.Description)
             Detail
         </th>
-        <th>
-            @*@Html.DisplayNameFor(model => model.Comment)*@
-            Comment
-        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Comment)
+        </th>*@
         @*<th>
             @Html.DisplayNameFor(model => model.CreateTime)
         </th>*@
@@ -46,9 +46,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Comment)
-        </td>
+        </td>*@
         @*<td>
             @Html.DisplayFor(modelItem => item.CreateTime)
         </td>*@
@@ -59,9 +59,9 @@
             @Html.DisplayFor(modelItem => item.Status)
         </td>
         <td>
-            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            <a asp-action="Edit" asp-route-obscureId="@item.ObscureId">Edit</a> |
+            <a asp-action="Details" asp-route-obscureId="@item.ObscureId">Details</a> |
+            <a asp-action="Delete" asp-route-obscureId="@item.ObscureId">Delete</a>
         </td>
     </tr>
 }

@@ -12,7 +12,8 @@
                 <a asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
             </li>
             <li>
-                <button type="submit" class="btn btn-link navbar-btn navbar-link">Log off</button>
+                <a style="cursor: pointer;" onclick="$(this).closest('form').submit();">Log off</a>
+                @*<input type="submit" class="text-center" value="Log off">*@
             </li>
         </ul>
     </form>

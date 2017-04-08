@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.DataProtection;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Cobra.Models
 {
@@ -14,13 +16,14 @@ namespace Cobra.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [NotMapped]
+        public string ObscureId { get; set; }
 
         public string Name { get; set; }
 
         public string Email { get; set; }
 
         public string Phone { get; set; }
-
 
         public string Title { get; set; }
 

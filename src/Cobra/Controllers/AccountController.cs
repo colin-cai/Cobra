@@ -61,11 +61,11 @@ namespace Cobra.Controllers
                 var user = await _userManager.FindByNameAsync(model.Email);
                 if (user != null)
                 {
-                    if (!await _userManager.IsEmailConfirmedAsync(user))
-                    {
-                        ModelState.AddModelError(string.Empty, "You must have a confirmed email to log in.");
-                        return View(model);
-                    }
+                    //if (!await _userManager.IsEmailConfirmedAsync(user))
+                    //{
+                    //    ModelState.AddModelError(string.Empty, "You must have a confirmed email to log in.");
+                    //    return View(model);
+                    //}
                 }
 
                 // This doesn't count login failures towards account lockout
@@ -118,18 +118,18 @@ namespace Cobra.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
-                    // Send an email with this link
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
-                    await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
-                        $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
-                    //await _signInManager.SignInAsync(user, isPersistent: false);
-                    _logger.LogInformation(3, "User created a new account with password.");
-                    return RedirectToLocal(returnUrl);
-                }
+                //if (result.Succeeded)
+                //{
+                //    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
+                //    // Send an email with this link
+                //    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                //    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+                //    await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
+                //        $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
+                //    //await _signInManager.SignInAsync(user, isPersistent: false);
+                //    _logger.LogInformation(3, "User created a new account with password.");
+                //    return RedirectToLocal(returnUrl);
+                //}
                 AddErrors(result);
             }
 

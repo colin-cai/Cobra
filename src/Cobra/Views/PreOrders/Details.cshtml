@@ -47,11 +47,6 @@
         </dd>
     </dl>
 </div>
-
-@*<p>
-    <a asp-action="CreatePaperBag" asp-route-id="@Model.Id">Add Paper Bag</a> |
-    <a asp-action="CreatePaperBox" asp-route-id="@Model.Id">Add Paper Box</a>
-</p>*@
 <br />
 
 @for (var index = 0; index < Model.PaperBags.Count(); index++)
@@ -62,12 +57,12 @@
         <div class="col-md-8">
             <h4>Paper Bag - @Model.PaperBags[index].Description</h4>
         </div>
-        <div class="col-md-4 text-right">
+        @*<div class="col-md-4 text-right">
             <p>
-                <a asp-action="EditPaperBag" asp-route-id="@Model.PaperBags[index].Id">Edit</a> |
-                <a asp-action="DeletePaperBag" asp-route-id="@Model.PaperBags[index].Id">Delete</a>
+                <a asp-action="EditPaperBag" asp-route-obscureId="@Model.PaperBags[index].ObscureId">Edit</a> |
+                <a asp-action="DeletePaperBag" asp-route-obscureId="@Model.PaperBags[index].ObscureId">Delete</a>
             </p>
-        </div>
+        </div>*@
     </div>
     <hr />
     @await Component.InvokeAsync("PaperBag", new { id = Model.PaperBags[index].Id })
@@ -82,6 +77,6 @@
 <br />
 <br />
 <p>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit this Quote</a> |
-    <a asp-action="Index">Back to Quote List</a>
+    <a asp-action="Edit" asp-route-obscureId="@Model.ObscureId">Edit this Quote</a> |
+    <a asp-action="Index">Back to your Quotes</a>
 </p>
